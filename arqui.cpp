@@ -43,7 +43,6 @@ void mostrarEnBinario(int arr[], int n) {
     for (int i = n - 1; i >= 0; i--) {
         cout << arr[i];
     }
-    cout << endl;
 }
 
 void convertirABinario(string bin, int arr[], int n) {
@@ -61,29 +60,34 @@ void convertirABinario(string bin, int arr[], int n) {
 void ejecutarAlgoritmoBooth(int M[], int Q[], int n) {
     int A[8] = { 0 }, Q_1 = 0, contador = n;
 
-    cout << "Estado inicial:\n";
-    cout << "A: "; mostrarEnBinario(A, n);
-    cout << "Q: "; mostrarEnBinario(Q, n);
+    cout << "\nEstado inicial:\n";
+    cout << "A: "; mostrarEnBinario(A, n); cout << "\n";
+    cout << "Q: "; mostrarEnBinario(Q, n); cout << "\n";
     cout << "Q-1: " << Q_1 << "\n\n";
 
     while (contador > 0) {
+        cout << "Iteracion " << n - contador + 1 << ":\n";
+
         if (Q[0] == 1 && Q_1 == 0) {
             restaBinaria(A, M, n);
-            cout << "Restar A = A - M: A = "; mostrarEnBinario(A, n);
+            cout << "Operacion: Restar A = A - M\n";
         }
         else if (Q[0] == 0 && Q_1 == 1) {
             sumaBinaria(A, M, n);
-            cout << "Sumar A = A + M: A = "; mostrarEnBinario(A, n);
+            cout << "Operacion: Sumar A = A + M\n";
         }
         realizarCorrimiento(A, Q, Q_1, n);
-        cout << "Corrimiento: A = "; mostrarEnBinario(A, n);
-        cout << "Q = "; mostrarEnBinario(Q, n);
+        cout << "Despues del corrimiento:\n";
+        cout << "A: "; mostrarEnBinario(A, n); cout << "\n";
+        cout << "Q: "; mostrarEnBinario(Q, n); cout << "\n";
         cout << "Q-1: " << Q_1 << "\n\n";
+
         contador--;
     }
-    cout << "Resultado:\n";
-    cout << "A: "; mostrarEnBinario(A, n);
-    cout << "Q: "; mostrarEnBinario(Q, n);
+
+    cout << "Resultado final:\n";
+    cout << "A: "; mostrarEnBinario(A, n); cout << "\n";
+    cout << "Q: "; mostrarEnBinario(Q, n); cout << "\n";
 }
 
 int main() {
@@ -93,10 +97,10 @@ int main() {
 
     string binMultiplicando, binMultiplicador;
 
-    cout << "Ingrese un numero en binario: ";
+    cout << "Ingrese el primer numero en binario: ";
     cin >> binMultiplicando;
 
-    cout << "Ingrese un numero en binario: ";
+    cout << "Ingrese el segundo numero en binario: ";
     cin >> binMultiplicador;
 
     int M[8] = { 0 }, Q[8] = { 0 };
